@@ -24,6 +24,10 @@ public abstract class Duck {
         return totalDistance;
     }
 
+    public void setTotalDistance(int totalDistance) {
+        this.totalDistance = totalDistance;
+    }
+
     public Duck() {
     }
 
@@ -32,4 +36,6 @@ public abstract class Duck {
         this.totalDistance += flyDistance;
         return flyDistance;
     }
+
+    public abstract void setRandomFlyBehavior();
 }

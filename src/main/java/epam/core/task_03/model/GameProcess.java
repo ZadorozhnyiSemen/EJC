@@ -4,10 +4,14 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class GameProcess {
     public static final int DUCKS_IN_GAME = 5;
+    private static final int LAPS = 10;
+    private static final int BET_AMOUNT = 100;
+    private static final int WIN_AMOUNT = BET_AMOUNT * 2;
     private Player player;
     private List<Duck> ducks;
     private BufferedReader reader;
@@ -33,7 +37,7 @@ public class GameProcess {
         this.reader = new BufferedReader(new InputStreamReader(System.in));
         this.ducks = new ArrayList<>(DUCKS_IN_GAME);
         for (int i = 0; i < DUCKS_IN_GAME; i++) {
-            ducks.add(new ChampionDuck());
+            ducks.add(new ChampionDuck(i));
         }
     }
 
@@ -45,11 +49,31 @@ public class GameProcess {
     public void begin() {
         while (player.getBalance() > 0) {
             enterBet();
-            System.out.printf("Hi %s! Your balance is %d. Your bet is on duck #%d. Good luck!\n"
+            System.out.printf("%s! Your balance is %d. Your bet is on duck #%d. Good luck!\n"
                     , player.getName(), player.getBalance(), player.getPlayerBet() + 1);
-            player.setBalance(0);
+            beginRound();
         }
-        System.out.println("YOU LOSE!");
+        System.out.println("Game over!");
+    }
+
+    private void beginRound() {
+        for (int i = 0; i < LAPS; i++) {
+            ducks.forEach(Duck::performFly);
+        }
+        ducks.forEach(d -> System.out.println(d.getTotalDistance()));
+        Duck winner = ducks.stream().max(Comparator.comparingInt(Duck::getTotalDistance)).get();
+        System.out.printf("The winner is duck with #%d \n", winner.getNumber() + 1);
+        if (winner.getNumber() == player.getPlayerBet()) {
+            player.setBalance(player.getBalance() + WIN_AMOUNT);
+            System.out.printf("You win!!! You have %d balance now! \n", player.getBalance());
+        } else {
+            System.out.println("You were close, try again");
+            player.setBalance(player.getBalance() - BET_AMOUNT);
+        }
+        System.out.printf("\t\tRound ended\n==========================\n");
+        ducks.forEach(duck -> duck.setTotalDistance(0));
+        ducks.forEach(Duck::setRandomFlyBehavior);
+
     }
 
     private void enterBet() {
