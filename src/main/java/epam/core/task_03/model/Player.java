@@ -2,7 +2,7 @@ package epam.core.task_03.model;
 
 public class Player {
     private String name;
-    private int balance;
+    private int balance = 500;
     private int playerBet;
 
     public int getPlayerBet() {
@@ -13,9 +13,8 @@ public class Player {
         this.playerBet = playerBet;
     }
 
-    public Player(String name, int balance) {
+    public Player(String name) {
         this.name = name;
-        this.balance = balance;
     }
 
     public String getName() {
