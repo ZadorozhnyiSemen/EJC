@@ -50,7 +50,9 @@ public class GameProcess {
         while (player.getBalance() > 0) {
             enterBet();
             System.out.printf("%s! Your balance is %d. Your bet is on duck #%d. Good luck!\n"
-                    , player.getName(), player.getBalance(), player.getPlayerBet() + 1);
+                    , player.getName()
+                    , player.getBalance()
+                    , player.getPlayerBet() + 1);
             beginRound();
         }
         System.out.println("Game over!");
@@ -78,11 +80,12 @@ public class GameProcess {
 
     private void enterBet() {
         boolean flag = true;
+        int betNumber = 0;
         while (flag) {
-            int betNumber = 0;
             try {
                 System.out.println("Enter number of duck you betting: ");
-                betNumber = Integer.parseInt(reader.readLine());
+                String userEntry = reader.readLine();
+                betNumber = isValidString(userEntry);
                 if (betNumber > 0 && betNumber <= GameProcess.DUCKS_IN_GAME) {
                     flag = false;
                     player.setPlayerBet(betNumber - 1);
@@ -94,5 +97,11 @@ public class GameProcess {
                 e.printStackTrace();
             }
         }
+    }
+
+    private int isValidString(String userEntry) {
+        if (userEntry.matches(".*\\d+.*")) {
+            return Integer.parseInt(userEntry);
+        } else return 0;
     }
 }
