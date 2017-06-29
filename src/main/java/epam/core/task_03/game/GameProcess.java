@@ -1,4 +1,8 @@
-package epam.core.task_03.model;
+package epam.core.task_03.game;
+
+import epam.core.task_03.model.ChampionDuck;
+import epam.core.task_03.model.Duck;
+import epam.core.task_03.model.Player;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -37,7 +41,6 @@ public class GameProcess {
     }
 
     public Player getPlayer() {
-
         return player;
     }
 
@@ -55,11 +58,6 @@ public class GameProcess {
         for (int i = 0; i < DUCKS_IN_GAME; i++) {
             ducks.add(new ChampionDuck(i));
         }
-    }
-
-    public GameProcess(Player player, List<Duck> ducks) {
-        this.player = player;
-        this.ducks = ducks;
     }
 
     /**
@@ -102,7 +100,6 @@ public class GameProcess {
         System.out.printf("\t\tRound ended\n==========================\n");
         ducks.forEach(duck -> duck.setTotalDistance(0));
         ducks.forEach(Duck::setRandomFlyBehavior);
-
     }
 
     /**
@@ -110,7 +107,7 @@ public class GameProcess {
      */
     private void enterBet() {
         boolean flag = true;
-        int betNumber = 0;
+        int betNumber;
         while (flag) {
             try {
                 System.out.println("Enter number of duck you betting: ");

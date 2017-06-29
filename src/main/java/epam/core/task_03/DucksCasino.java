@@ -1,6 +1,6 @@
 package epam.core.task_03;
 
-import epam.core.task_03.model.GameProcess;
+import epam.core.task_03.game.GameProcess;
 import epam.core.task_03.model.Player;
 
 import java.io.BufferedReader;
@@ -16,6 +16,7 @@ public class DucksCasino {
             game.setPlayer(new Player(name));
             game.begin();
         } catch (IOException e) {
+            System.err.println("Unable to read line!");
             e.printStackTrace();
         }
     }
