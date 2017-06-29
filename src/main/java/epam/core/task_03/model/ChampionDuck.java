@@ -2,6 +2,15 @@ package epam.core.task_03.model;
 
 import epam.core.task_03.generator.RandomValueGenerator;
 
+/**
+ * Champion Duck this ducks implements ability to fly
+ * FlyBehavior is random and sets when object is created
+ *
+ * @see epam.core.task_03.model.Duck
+ *
+ * @author Zadorozhnyi Semen
+ * @since GameCasino_v0.0.1
+ */
 public class ChampionDuck extends Duck {
     public ChampionDuck(int number) {
         setNumber(number);
@@ -13,7 +22,9 @@ public class ChampionDuck extends Duck {
         super.setTotalDistance(totalDistance);
     }
 
-    @Override
+    /**
+     * {@inheritDoc}
+     */
     public void setRandomFlyBehavior() {
         switch (RandomValueGenerator.getRandomZeroOrOne()) {
             case 0: setFlyBehavior(new FlyNoWay());

@@ -7,6 +7,18 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
+/**
+ * Duck Casino game process.
+ * Player for game should be set before game starts.
+ *
+ * Game process have fixed amount of Ducks in game
+ * and initializes them when constructor called.
+ * Also have fixed amount of laps(min/sec/steps of game),
+ * fixed bet and win amount.
+ *
+ * @author Zadorozhnyi Semen
+ * @since GameCasino_v0.0.1
+ */
 public class GameProcess {
     public static final int DUCKS_IN_GAME = 5;
     private static final int LAPS = 10;
@@ -33,6 +45,10 @@ public class GameProcess {
         this.player = player;
     }
 
+    /**
+     * Default constructor that also initializes
+     * all Ducks needed for game and give them unique number in game
+     */
     public GameProcess() {
         this.reader = new BufferedReader(new InputStreamReader(System.in));
         this.ducks = new ArrayList<>(DUCKS_IN_GAME);
@@ -46,6 +62,9 @@ public class GameProcess {
         this.ducks = ducks;
     }
 
+    /**
+     * Begins game process
+     */
     public void begin() {
         while (player.getBalance() > 0) {
             enterBet();
@@ -58,6 +77,14 @@ public class GameProcess {
         System.out.println("Game over!");
     }
 
+    /**
+     * Begins round after all preparations done.
+     * One round consist of declared laps.
+     * At each lap all ducks perform their lfy method
+     * and add it's result to their total distance.
+     * After round is over clear total distance for each duck,
+     * change fly behavior and check if player win round.
+     */
     private void beginRound() {
         for (int i = 0; i < LAPS; i++) {
             ducks.forEach(Duck::performFly);
@@ -78,6 +105,9 @@ public class GameProcess {
 
     }
 
+    /**
+     * Asks player to enter his bet using console
+     */
     private void enterBet() {
         boolean flag = true;
         int betNumber = 0;
@@ -99,6 +129,11 @@ public class GameProcess {
         }
     }
 
+    /**
+     * Checks if string is digit
+     * @param userEntry string entered by user
+     * @return <code>0</code> if string invalid <br> <code>string as int</code> if valid
+     */
     private int isValidString(String userEntry) {
         if (userEntry.matches(".*\\d+.*")) {
             return Integer.parseInt(userEntry);

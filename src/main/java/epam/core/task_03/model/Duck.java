@@ -1,5 +1,17 @@
 package epam.core.task_03.model;
 
+/**
+ * Simple Duck class represents Duck for CasinoGame
+ * Each Duck can have number and total distance it went
+ * in game.
+ * Also every Duck have it's own fly behavior interface
+ * and able to fly!
+ * @see epam.core.task_03.model.FlyBehavior
+ *
+ *
+ * @author Zadorozhnyi Semen
+ * @since GameCasino_v0.0.1
+ */
 public abstract class Duck {
     private FlyBehavior flyBehavior;
     private int totalDistance;
@@ -37,5 +49,8 @@ public abstract class Duck {
         return flyDistance;
     }
 
+    /**
+     * Sets random fly behavior for duck
+     */
     public abstract void setRandomFlyBehavior();
 }
