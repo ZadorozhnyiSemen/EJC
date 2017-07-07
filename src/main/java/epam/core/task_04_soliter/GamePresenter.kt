@@ -1,7 +1,7 @@
 package epam.core.task_04_soliter
 
 
-class GamePresenter {
+object GamePresenter {
     var view: GameView? = null
 
     fun onDeckTap() {
