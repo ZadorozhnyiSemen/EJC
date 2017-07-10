@@ -23,4 +23,9 @@ object GamePresenter {
         GameModel.onTableauTap(tableauIndex, cardIndex)
         view?.update()
     }
+
+    fun onRestartTap() {
+        GameModel.resetGame()
+        view?.update()
+    }
 }

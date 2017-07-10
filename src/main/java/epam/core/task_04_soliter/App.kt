@@ -11,10 +11,12 @@ fun main(args: Array<String>) {
         println("You can tap on piles by pressing from '1' to '7'")
         println("you can tap on foundation pile by pressing 'q' 'w' 'e' 'r'")
         println("QUIT = QUIT")
+        println("Type 'restart' to restart")
         GameModel.debugPring()
         val userAction = readLine()
         when (userAction) {
             "QUIT" -> flag = false
+            "restart" -> GamePresenter.onRestartTap()
             "0" -> GamePresenter.onDeckTap()
             "9" -> GamePresenter.onWasteTap()
             "q" -> GamePresenter.onFoundationTap(0)
@@ -40,9 +42,9 @@ fun main(args: Array<String>) {
 }
 
 fun  pressed(tableauIndex: Int) {
-    println("Enter index of card bottom-top from 0 to 12")
+    println("Enter index of card top to bottom from 1 to 13")
     val index = readLine()
-    GamePresenter.onTableauTap(tableauIndex, index!!.toInt());
+    GamePresenter.onTableauTap(tableauIndex - 1, index!!.toInt() - 1);
 }
 
 
