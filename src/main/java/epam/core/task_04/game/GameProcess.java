@@ -8,7 +8,7 @@ import java.io.InputStreamReader;
 
 public class GameProcess {
     //Maximum player shots
-    private static final int MAX_MOVES = 60;
+    private static final int MAX_MOVES = 50;
     //Maximum ships on field
     private static final int SHIPS_COUNT = 10;
     //Column letters for field
@@ -28,10 +28,8 @@ public class GameProcess {
      * User can quit or restart any time
      */
     public void startGame() {
-        System.out.println(WELCOME_WORD);
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {
-            System.out.println(START_GAME);
-            reader.readLine();
+            System.out.println(GAME_READY);
             displayProgress();
             nextPlayerChoice:
             while (shotAttempts > 0) {
@@ -99,7 +97,7 @@ public class GameProcess {
         gameField.showGameBoard();
         System.out.printf("\n%s\n%s\n%s\n",MINOR_DELIMITER ,INFO, MINOR_DELIMITER);
         System.out.println(String.format("%s%d\n%s%d\n%s%d\n",
-                SHIPS_ON_BOARD,
+                REMAIN_SHIPS,
                 gameField.getAliveShipsCount(),
                 DESTROYED_SHIPS,
                 SHIPS_COUNT - gameField.getAliveShipsCount(),
@@ -111,8 +109,7 @@ public class GameProcess {
 
     // Texts for display
     public static final String EMPTY_SPACES = "  ";
-    private static final String WELCOME_WORD = "Ships are arranged! Ready to go!";
-    private static final String START_GAME = "Smash keyboard to begin! (Don't forget 'Enter')";
+    private static final String GAME_READY = "Ships are arranged. Ready to play!";
     private static final String BYE_WORD = "Bye :(";
     private static final String LOSS_WORD = "Reached try limit! Game over!";
     private static final String WIN_WORD = "You won! Bye!";
@@ -122,8 +119,8 @@ public class GameProcess {
             "Example A1, f5, j10";
     private static final String INFO = "INFO:\n(.) - empty cell\n(o) - missed cell\n(X) - hit cell";
     private static final String REMAIN_SHOOTS = "Remaining shots: ";
-    private static final String SHIPS_ON_BOARD = "Ships on board: ";
-    private static final String DESTROYED_SHIPS = "Destroyed ships: ";
+    private static final String REMAIN_SHIPS = "Remaining ships: ";
+    private static final String DESTROYED_SHIPS = "Already destroyed: ";
     private static final String MINOR_DELIMITER = "--------------------";
     private static final String DELIMITER = "==================================================";
     private static final String INVALID_INPUT = "Please enter valid cell.";

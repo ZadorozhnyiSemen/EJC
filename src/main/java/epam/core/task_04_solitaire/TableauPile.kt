@@ -1,4 +1,4 @@
-package epam.core.task_04_soliter
+package epam.core.task_04_solitaire
 
 
 class TableauPile(var cards: MutableList<Card> = mutableListOf()) {

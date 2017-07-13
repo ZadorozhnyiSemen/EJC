@@ -32,6 +32,12 @@ public class Main {
                 + "\nBe always careful");
     }
 
+    /**
+     * Almost all String class methods in action
+     * Sorry for code conventions but there is to much boilerplate code
+     *
+     * @throws UnsupportedEncodingException throws in Constructor with charsetName argument to avoid typo
+     */
     private static void methodsOfString() throws UnsupportedEncodingException {
         //Preparations
         StringBuilder builder = new StringBuilder("Hello from builder").append("!");

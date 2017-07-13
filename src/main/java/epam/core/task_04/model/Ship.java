@@ -54,6 +54,10 @@ public class Ship {
         return false;
     }
 
+    /**
+     * Get maximal row of the ship
+     * @return max ship row
+     */
     public int getMaxShipRow() {
         int maxShipRow = -1;
         for (Cell cell : cellList) {
@@ -64,6 +68,10 @@ public class Ship {
         return maxShipRow;
     }
 
+    /**
+     * Get minimal row of the ship
+     * @return min ship row
+     */
     public int getMinShipRow() {
         int minShipRow = 100;
         for (Cell cell : cellList) {
@@ -74,6 +82,10 @@ public class Ship {
         return minShipRow;
     }
 
+    /**
+     * Get maximal column of the ship
+     * @return max ship column
+     */
     public int getMaxShipCol() {
         int maxShipCol = -1;
         for (Cell cell : cellList) {
@@ -84,6 +96,10 @@ public class Ship {
         return maxShipCol;
     }
 
+    /**
+     * Get minimal column of the ship
+     * @return min ship column
+     */
     public int getMinShipCol() {
         int minShipCol = 100;
         for (Cell cell : cellList) {
