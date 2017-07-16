@@ -1,10 +1,9 @@
 # EJC
 Epam systems training
 
-## Strategy
+## REPOSITORY IS OLD 
 
-1. Begin with `Hello world!`
-2. *Learn*
-3. Success
-4. `GOTO 2`
+1. EJC repository is deprecated 
+2. New repository is ejc-17
+3. You can use EJC to watch old commits
 
